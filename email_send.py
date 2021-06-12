@@ -18,13 +18,13 @@ msg1['To']  = contacts
 msg1['From'] = EMAIL_ADDRESS
 msg1.set_content('How about dinner at 5pm this saturday?')
 path = Path('C:\\Users\\hp\\web\\files\\themes\\red\\new_resume.pdf')
-with open(path,'rb') as apple:
-    file_data  = apple.read()
-    file_type  = imghdr.what(apple.name)
-    file_name  = path.stem
+with open(path,'rb') as resume:
+    file_data  = resume.read()
+    file_name  = path.parts[-1]
+    print(file_name)
 
 
-
+msg1.add_attachment(file_data,maintype = 'pdf',subtype = 'pdf' ,filename = file_name)
 
 print('sending..')
 with smtplib.SMTP_SSL('smtp.gmail.com',465) as smtp:
