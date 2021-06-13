@@ -21,7 +21,6 @@ path = Path('C:\\Users\\hp\\web\\files\\themes\\red\\new_resume.pdf')
 with open(path,'rb') as resume:
     file_data  = resume.read()
     file_name  = path.parts[-1]
-   # print(file_name)
 
 
 msg1.add_attachment(file_data,maintype = 'pdf',subtype = 'pdf' ,filename = file_name)
@@ -32,4 +31,3 @@ with smtplib.SMTP_SSL('smtp.gmail.com',465) as smtp:
 
     smtp.send_message(msg1)
     print('done')
-
