@@ -42,3 +42,4 @@ def photo_downloader(url):
 
 if __name__ == "__main__":
     send_mail()
+    #photo_downloader(https://unsplash.com/wallpapers)
