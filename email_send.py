@@ -7,7 +7,9 @@ from pathlib import Path
 
 EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS')
 EMAIL_PASSWORD = os.getenv('EMAIL_PASS')
-contacts = [EMAIL_ADDRESS , 'prabal0100pathak']
+Reciver = os.getenv("REC_EMAIL")
+Paths = os.getenv('Paths')
+contacts = [EMAIL_ADDRESS,Reciver]
 msg = EmailMessage()
 msg['Subject'] = 'How to send mail'
 msg['To'] = contacts
@@ -17,7 +19,7 @@ msg1['Subject'] = 'Grab dinner this weekend?'
 msg1['To']  = contacts
 msg1['From'] = EMAIL_ADDRESS
 msg1.set_content('How about dinner at 5pm this saturday?')
-path = Path('C:\\Users\\hp\\web\\files\\themes\\red\\new_resume.pdf')
+path = Path(Paths)
 with open(path,'rb') as resume:
     file_data  = resume.read()
     file_name  = path.parts[-1]
