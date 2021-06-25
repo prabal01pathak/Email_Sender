@@ -38,8 +38,22 @@ def send_mail():
 def photo_downloader(url):
     request = requests.get(url,allow_redirects = True)
     data = BeautifulSoup(request.text,'lxml')
-    downloads = data.find('a',class_ = "link--h3bPW")
+    all_image=data.find_all('figure',itemprop="image")
+    count =20 
+    os.chdir('..\\pictures')
+    for i in all_image:
+        url=i.find('a',rel="nofollow")
+        if url != None:
+            i_url = url['href']
+            photo_bytes = requests.get(i_url,allow_redirects=True)
+            with open(f'{count}programming.jpg','wb') as photo:
+                photo.write(photo_bytes.content)
+                print(count)
+                count +=1
+                
+    print("Done")
+        
+        
 
 if __name__ == "__main__":
-    send_mail()
-    #photo_downloader(https://unsplash.com/wallpapers)
+    photo_downloader("https://unsplash.com/s/photos/programming")
